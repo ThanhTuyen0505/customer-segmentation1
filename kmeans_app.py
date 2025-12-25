@@ -76,7 +76,17 @@ input_scaled = scaler.transform(input_data)
 if st.button("Predict Segment"):
     cluster = kmeans.predict(input_scaled)[0]
 
-    st.success(f"Predicted Segment: Cluster {cluster}")
+    # Map cluster -> label
+    if cluster == 0:
+        cluster_label = "Khách hàng giá trị cao"
+    elif cluster == 1:
+        cluster_label = "Khách hàng nhạy cảm về giá"
+    else:
+        cluster_label = f"Cluster {cluster}"
+
+    st.success(f"Phân khúc khách hàng: {cluster_label}")
+
+    st.success(f"Phân khúc khách hàng: {cluster_label}")
 
     st.subheader("Cluster Profile (Average Values)")
     st.dataframe(cluster_profile.loc[[cluster]])
