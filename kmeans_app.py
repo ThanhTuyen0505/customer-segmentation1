@@ -83,8 +83,6 @@ if st.button("Predict Segment"):
         cluster_label = "Khách hàng nhạy cảm về giá"
     else:
         cluster_label = f"Cluster {cluster}"
-
     st.success(f"Phân khúc khách hàng: {cluster_label}")
-
     st.subheader("Cluster Profile (Average Values)")
     st.dataframe(cluster_profile.loc[[cluster]])
